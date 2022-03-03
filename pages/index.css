@@ -20,6 +20,13 @@
   }
 }
 
+@media (max-width: 620px) {
+  .header__logo {
+    width: 103px;
+    height: 24px;
+  }
+}
+
 .content {
   max-width: 880px;
   margin: 0 auto;
@@ -55,8 +62,19 @@
 }
 
 .profile__add-button {
-  margin: 35px 0 0 0;
+  width: 150px;
+  height: 50px;
+  margin: 35px 0 0 200px;
   padding: 0;
+  background-color: black;
+  border: 1px solid white;
+}
+
+@media (max-width: 960px) {
+  .profile__add-button {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .profile__add-button:hover {
@@ -65,12 +83,18 @@
 }
 
 .profile__item {
-  margin: 22px 205px 0 25px;
+  margin: 22px 0 0 30px;
   padding: 0;
 }
 
+@media (max-width: 960px) {
+  .profile__item {
+    margin: 22px auto;
+  }
+}
+
 .item__title {
-  display: flex;;
+  display: flex;
 }
 
 .item__name {
@@ -82,8 +106,24 @@
   padding: 0 18px 16px 0;
 }
 
+@media (max-width: 620px) {
+  .item__name {
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 32px;
+  }
+}
+
 .item__edit-button {
   margin: 15px 0 0 0;
+}
+
+@media (max-width: 620px) {
+  .item__edit-button {
+    margin: 8px 0 0 0;
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .item__edit-button:hover {
@@ -101,6 +141,12 @@
   align-self: center;
 }
 
+@media (max-width: 620px) {
+  .item__subtitle {
+    text-align: center;
+  }
+}
+
 .elements {
   display: grid;
   grid-template-columns: repeat(3, 282px);
@@ -110,6 +156,13 @@
 }
 
 @media (max-width: 960px) {
+  .elements {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 361px);
+  }
+}
+
+@media (max-width: 620px) {
   .elements {
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(6, 361px);
@@ -126,6 +179,12 @@
   max-height: 361px;
   border-radius: 10px;
   overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .elements__item {
+    margin: 0 auto;
+  }
 }
 
 .item__image {
@@ -167,10 +226,33 @@
   padding: 67px 0 60px 0;
 }
 
+@media (max-width: 960px) {
+  .footer {
+    padding: 67px 0 60px 19px;
+  }
+}
+
+@media (max-width: 620px) {
+  .footer {
+    padding: 48px 0 36px 19px;
+  }
+}
+
 .footer__copyright {
   margin: 0;
   padding: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
   color: #545454;
+}
+
+@media (max-width: 620px) {
+  .footer__copyright {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
 }
 
 .pop-up {
@@ -183,6 +265,10 @@
   left: 0;
 }
 
+.pop-up__opened {
+  display: block;
+}
+
 .pop-up__container {
   display: flex;
   flex-direction: column;
@@ -191,8 +277,23 @@
   margin: 195px auto;
 }
 
+@media (max-width: 620px) {
+  .pop-up__container {
+    max-width: 282px;
+    min-height: 370px;
+    margin: 123px auto;
+  }
+}
+
 .pop-up__close-icon {
   align-self: flex-end;
+}
+
+@media (max-width: 620px) {
+  .pop-up__close-icon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .pop-up__close-icon:hover {
@@ -210,6 +311,15 @@
   padding: 34px 36px 37px 36px;
 }
 
+@media (max-width: 620px) {
+  .pop-up__form {
+    max-width: 282px;
+    min-height: 322px;
+    margin: 16px 0 0 0;
+    padding: 25px 22px 25px 22px;
+  }
+}
+
 .form__title {
   margin: 0 0 54px 0;
   padding: 0;
@@ -218,7 +328,16 @@
   line-height: 29px;
 }
 
-.form__input {
+@media (max-width: 620px) {
+  .form__title {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 21px;
+    margin: 0 0 75px 0;
+  }
+}
+
+.form__input_name {
   margin: 0 0 30px 0;
   padding: 0 0 13px 0;
   border: none;
@@ -227,6 +346,29 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
+}
+
+@media (max-width: 620px) {
+  .form__input_name {
+    min-width: 238px;
+  }
+}
+
+.form__input_job {
+  margin: 0 0 30px 0;
+  padding: 0 0 13px 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  min-width: 356px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+@media (max-width: 620px) {
+  .form__input_job {
+    min-width: 238px;
+  }
 }
 
 .form__button-submit {
@@ -239,6 +381,16 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
+}
+
+@media (max-width: 620px) {
+  .form__button-submit {
+    min-width: 238px;
+    min-height: 46px;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 16px 0 0 0;
+  }
 }
 
 .form__button-submit:hover {
