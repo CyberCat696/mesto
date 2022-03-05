@@ -7,7 +7,7 @@
   background-image: url(../../../images/plus-button.svg);
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid white
+  border: 1px solid white;
 }
 
 @media (max-width: 960px) {
