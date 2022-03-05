@@ -1,5 +1,11 @@
 .elements__main-heart-logo {
+  width: 22px;
+  height: 19px;
   margin: 5px 5px 0 0;
+  padding: 0;
+  background-image: url(../../../images/logo-heart.svg);
+  background-color: white;
+  border: none;
 }
 
 .elements__main-heart-logo:hover {
