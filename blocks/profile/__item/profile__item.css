@@ -1,0 +1,10 @@
+.profile__item {
+  margin: 22px 0 0 30px;
+  padding: 0;
+}
+
+@media (max-width: 960px) {
+  .profile__item {
+    margin: 22px auto;
+  }
+}

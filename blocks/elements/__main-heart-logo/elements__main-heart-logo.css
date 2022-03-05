@@ -1,0 +1,8 @@
+.elements__main-heart-logo {
+  margin: 5px 5px 0 0;
+}
+
+.elements__main-heart-logo:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

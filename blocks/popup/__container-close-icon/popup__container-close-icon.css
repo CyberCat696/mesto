@@ -1,0 +1,15 @@
+.popup__container-close-icon {
+  align-self: flex-end;
+}
+
+@media (max-width: 620px) {
+  .popup__container-close-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.popup__container-close-icon:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

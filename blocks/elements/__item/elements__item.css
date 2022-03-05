@@ -1,0 +1,17 @@
+.elements__item {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  max-width: 282px;
+  max-height: 361px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .elements__item {
+    margin: 0 auto;
+  }
+}
