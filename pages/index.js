@@ -1,40 +1,39 @@
 const editPopupButton = document.querySelector('.profile__title-edit-button')
 const popup = document.querySelector('.popup')
-const popupCloseButton = document.querySelector('.popup__container-close-icon')
+const popupCloseButton = popup.querySelector('.popup__container-close-icon')
+
+let titleName = document.querySelector('.profile__title-name')
+let subtitleName = document.querySelector('.profile__subtitle')
+
+let formElement = document.querySelector('.form')
+let nameInput = document.querySelector('#name')
+let jobInput = document.querySelector('#job')
 
 function openPopup() {
-    popup.classList.add('popup__opened')
+    popup.classList.add('popup_opened')
 }
 
 function closePopup() {
-    popup.classList.remove('popup__opened')
+    popup.classList.remove('popup_opened')
+}
+
+function formSubmitHandler(evt) {
+    evt.preventDefault();
+
+    titleName.textContent = nameInput.value
+    subtitleName.textContent = jobInput.value
+
+    closePopup()
 }
 
 
 editPopupButton.addEventListener('click', openPopup)
 popupCloseButton.addEventListener('click', closePopup)
 
-popup.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        closePopup()
-    }
-})
-
-
-let formElement = document.querySelector('.form')
-let nameInput = document.querySelector('.form__title-input-name')
-let jobInput = document.querySelector('.form__title-input-job')
-
-
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-
-    let nameInput = document.querySelector('.form__title-input-name').value 
-    document.querySelector('.profile__title-name').textContent = nameInput
-
-    let jobInput = document.querySelector('.form__title-input-job').value 
-    document.querySelector('.profile__subtitle').textContent = jobInput
-    popup.classList.remove('popup__opened')
-}
-
 formElement.addEventListener('submit', formSubmitHandler);
+
+// popup.addEventListener('click', function(event) {
+//     if(event.target === event.currentTarget) {
+//         closePopup()
+//     }
+// })

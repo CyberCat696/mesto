@@ -1,4 +1,5 @@
 .elements__main-text {
+  max-width: 200px;
   margin: 0;
   padding: 0;
   font-size: 24px;

@@ -15,58 +15,61 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img src="./images/nirmal.jpg" alt="фото_профиль" class="profile__image">
-            <div class="profile__item">
-                <div class="profile__title">
-                    <h2 class="profile__title-name">Нирмал Пурджа</h2>
-                    <button class="profile__title-edit-button" type="button"></button>
+            <div class="profile__info">
+                <img src="./images/nirmal.jpg" alt="фото_профиль" class="profile__image">
+                <div class="profile__item">
+                    <div class="profile__title">
+                        <h1 class="profile__title-name">Нирмал Пурджа</h1>
+                        <button class="profile__title-edit-button" type="button"
+                            aria-label="редактировать профиль"></button>
+                    </div>
+                    <p class="profile__subtitle">Покоритель вершин</p>
                 </div>
-                <p class="profile__subtitle">Покоритель вершин</p>
             </div>
-            <button class="profile__add-button" type="button"></button>
+            <button class="profile__add-button" type="button" aria-label="новый профиль"></button>
 
         </section>
         <ul class="elements">
             <li class="elements__item">
                 <img src="./images/elements/everest.jpg" alt="еверест" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">Эверест</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">Эверест</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/k2.jpg" alt="к2" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">К2</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">К2</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/makalu.jpg" alt="макалу" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">Макалу</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">Макалу</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/dhulagiri.jpg" alt="дхаулагири" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">Дхаулагири</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">Дхаулагири</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/canchenjanga.jpg" alt="канченджанга" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">Канченджанга</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">Канченджанга</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/annapurna.jpg" alt="аннапурна" class="elements__item-image">
                 <div class="elements__main">
-                    <p class="elements__main-text">Аннапурна</p>
-                    <button class="elements__main-heart-logo" type="button"></button>
+                    <h2 class="elements__main-text">Аннапурна</h2>
+                    <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
             </li>
         </ul>
@@ -76,12 +79,14 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <button class="popup__container-close-icon" type="button"></button>
-            <form class="form" action="url">
+            <button class="popup__container-close-icon" type="button" aria-label="закрыть"></button>
+            <form class="form" name="profile" action="url">
                 <h2 class="form__title">Редактировать профиль</h2>
-                <input class="form__title-input-name" type="text" name="firstname" placeholder="Нирмал Пурджа">
-                <input class="form__title-input-job" type="text" name="job" placeholder="Покоритель вершин">
-                <button class="form__title-button-submit">Сохранить</button>
+                <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя"
+                    value="Нирмал Пурджа">
+                <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
+                    value="Покоритель вершин">
+                <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
             </form>
         </div>
     </div>

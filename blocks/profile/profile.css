@@ -1,14 +1,12 @@
 .profile {
   display: flex;
+  justify-content: space-between;
   max-width: 880px;
-  min-height: 120px;
   margin: 0;
 }
 
 @media (max-width: 960px) {
   .profile {
-    display: flex;
     flex-direction: column;
-    max-width: 880px;
   }
 }
