@@ -1,0 +1,13 @@
+.elements__main-heart-logo_active {
+  background-image: url(../../../../images/logo-heart-active.svg);
+  width: 22px;
+  height: 19px;
+  margin: 5px 5px 0 0;
+  padding: 0;
+  border: none;
+}
+
+.elements__main-heart-logo_active:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

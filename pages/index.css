@@ -19,6 +19,7 @@
 @import url(../blocks/elements/__main/elements__main.css);
 @import url(../blocks/elements/__main-text/elements__main-text.css);
 @import url(../blocks/elements/__main-heart-logo/elements__main-heart-logo.css);
+@import url(../blocks/elements/__main-heart-logo/_active/elements__main-heart-logo_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/popup.css);

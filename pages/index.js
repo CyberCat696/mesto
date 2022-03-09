@@ -11,6 +11,9 @@ let jobInput = document.querySelector('#job')
 
 function openPopup() {
     popup.classList.add('popup_opened')
+
+    nameInput.value = titleName.textContent
+    jobInput.value = subtitleName.textContent
 }
 
 function closePopup() {
@@ -18,7 +21,7 @@ function closePopup() {
 }
 
 function formSubmitHandler(evt) {
-    evt.preventDefault();
+    evt.preventDefault()
 
     titleName.textContent = nameInput.value
     subtitleName.textContent = jobInput.value
@@ -30,7 +33,7 @@ function formSubmitHandler(evt) {
 editPopupButton.addEventListener('click', openPopup)
 popupCloseButton.addEventListener('click', closePopup)
 
-formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', formSubmitHandler)
 
 // popup.addEventListener('click', function(event) {
 //     if(event.target === event.currentTarget) {
