@@ -1,4 +1,9 @@
 .elements__item-image {
   max-width: 100%;
+  min-height: 282px;
   overflow: hidden;
+}
+
+.elements__item-image:hover {
+  cursor: pointer;
 }

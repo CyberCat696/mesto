@@ -31,11 +31,13 @@
         </section>
         <ul class="elements">
             <li class="elements__item">
-                <img src="./images/elements/everest.jpg" alt="еверест" class="elements__item-image">
+                <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                    alt="еверест" class="elements__item-image">
                 <div class="elements__main">
                     <h2 class="elements__main-text">Эверест</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/k2.jpg" alt="к2" class="elements__item-image">
@@ -43,6 +45,7 @@
                     <h2 class="elements__main-text">К2</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/makalu.jpg" alt="макалу" class="elements__item-image">
@@ -50,6 +53,7 @@
                     <h2 class="elements__main-text">Макалу</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/dhulagiri.jpg" alt="дхаулагири" class="elements__item-image">
@@ -57,6 +61,7 @@
                     <h2 class="elements__main-text">Дхаулагири</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/canchenjanga.jpg" alt="канченджанга" class="elements__item-image">
@@ -64,6 +69,7 @@
                     <h2 class="elements__main-text">Канченджанга</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
             <li class="elements__item">
                 <img src="./images/elements/annapurna.jpg" alt="аннапурна" class="elements__item-image">
@@ -71,25 +77,51 @@
                     <h2 class="elements__main-text">Аннапурна</h2>
                     <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
                 </div>
+                <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
             </li>
         </ul>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <div class="popup__container">
-            <button class="popup__container-close-icon" type="button" aria-label="закрыть"></button>
-            <form class="form" name="profile" action="url">
-                <h2 class="form__title">Редактировать профиль</h2>
-                <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя"
-                    value="Нирмал Пурджа">
-                <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
-                    value="Покоритель вершин">
-                <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
-            </form>
-        </div>
+    <template class="item__template">
+        <li class="elements__item">
+            <img src="./images/elements/annapurna.jpg" alt="аннапурна" class="elements__item-image">
+            <div class="elements__main">
+                <h2 class="elements__main-text">Аннапурна</h2>
+                <button class="elements__main-heart-logo" type="button" aria-label="нравится"></button>
+            </div>
+            <button class="element__item-trash-icon" type="button" aria-label="удалить"></button>
+        </li>
+    </template>
+    <div id="profile" class="popup">
+        <form class="form" name="profile" action="url">
+            <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+            <h2 class="form__title">Редактировать профиль</h2>
+            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа">
+            <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
+                value="Покоритель вершин">
+            <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
+        </form>
     </div>
+    <div id="place" class="popup">
+        <form class="form" name="place" action="url">
+            <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+            <h2 class="form__title">Новое место</h2>
+            <input id="place" class="form__title-input" type="text" name="place" placeholder="Название">
+            <input id="src" class="form__title-input" type="text" name="source" placeholder="Ссылка на картинку">
+            <button id="addButton" class="form__title-button-submit" type="submit" aria-label="создать">Создать</button>
+        </form>
+    </div>
+    <div id="image" class="popup">
+            <figure class="popup__item">
+                <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+                <img class="popup__item-image"
+                    src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                    alt="эверест">
+                <figcaption class="popup__item-text">Эверест</figcaption>
+            </figure>
+        </div>
     <script src="./pages/index.js"></script>
 </body>
 
