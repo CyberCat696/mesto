@@ -50,12 +50,10 @@ const imagePopupCloseButton = imagePopup.querySelector('.popup__close-icon')
 
 const template = document.querySelector('.item__template').content
 const elements = document.querySelector('.elements')
-const elementsText = document.querySelector('.elements__main-text')
 
 // Добавление карточки
 
 const formButton = document.querySelector('#addButton')
-const formPlace = document.querySelector('#formPlace')
 
 // Форма редактирования
 
@@ -67,11 +65,6 @@ let jobInput = document.querySelector('#job')
 
 // Форма добавления
 
-let placeNameInput = document.querySelector('#place')
-let linkInput = document.querySelector('#src')
-let imgInput = document.querySelector('.elements__item-image')
-let textInput = document.querySelector('.elements__main-text')
-let formInput = document.querySelector('.form__title-input')
 let formInputName = document.querySelector('.form__title-input_name')
 let formInputImage = document.querySelector('.form__title-input_image')
 
@@ -104,7 +97,6 @@ function addCard(evt) {
     newCard.querySelector('.elements__item-image').src = formInputImage.value
     newCard.querySelector('.elements__item-image').alt = formInputName.value
 
-    // renderCards(formInput.value)
     addListeners(newCard)
     elements.prepend(newCard)
 
