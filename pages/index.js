@@ -1,37 +1,8 @@
-// ==========================================================  Массивы  =========================================================
-
-const cards = [
-    {
-        name: 'Эверест',
-        link: 'https://images.unsplash.com/photo-1533130061792-64b345e4a833?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-    },
-    {
-        name: 'К2',
-        link: 'https://images.unsplash.com/photo-1627896157734-4d7d4388f28b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80'
-    },
-    {
-        name: 'Аннапурна',
-        link: 'https://images.unsplash.com/photo-1589800463007-3be49fe18b92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-    },
-    {
-        name: 'Денали',
-        link: 'https://images.unsplash.com/photo-1624469600761-6acd071481d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-    },
-    {
-        name: 'Маттерхорн',
-        link: 'https://images.unsplash.com/photo-1581010124530-f3c49901215f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-    },
-    {
-        name: 'Дель Кампо',
-        link: 'https://images.unsplash.com/photo-1606278483460-25d13da45337?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1525&q=80'
-    }
-];
-
 // ==========================================================  Переменные  =========================================================
 
 // Pop-up
 
-const popup = document.querySelector('#profile')
+const editPopup = document.querySelector('#profile')
 const addPopup = document.querySelector('#place')
 const imagePopup = document.querySelector('#image')
 
@@ -42,7 +13,7 @@ const editPopupButton = document.querySelector('.profile__title-edit-button')
 
 // Pop-up close
 
-const popupCloseButton = popup.querySelector('.popup__close-icon')
+const editPopupCloseButton = editPopup.querySelector('.popup__close-icon')
 const addPopupCloseButton = addPopup.querySelector('.popup__close-icon')
 const imagePopupCloseButton = imagePopup.querySelector('.popup__close-icon')
 
@@ -76,23 +47,29 @@ function render() {
     cards.forEach(renderCards)
 }
 
-function renderCards(element) {
+function renderCards(card) {
+    
     const newItem = template.cloneNode(true)
 
-    newItem.querySelector('.elements__main-text').textContent = element.name;
-    newItem.querySelector('.elements__item-image').src = element.link;
-    newItem.querySelector('.elements__item-image').alt = element.name;
+
+    newItem.querySelector('.elements__main-text').textContent = card.name;
+    newItem.querySelector('.elements__item-image').src = card.link;
+    newItem.querySelector('.elements__item-image').alt = card.name;
+
 
     addListeners(newItem)
     elements.appendChild(newItem)
-    
+
+
 }
+
+render()
 
 // Создание карточки
 
-function addCard(evt) {
-    evt.preventDefault()
+function addCard() {
     const newCard = template.cloneNode(true)
+
     newCard.querySelector('.elements__main-text').textContent = formInputName.value
     newCard.querySelector('.elements__item-image').src = formInputImage.value
     newCard.querySelector('.elements__item-image').alt = formInputName.value
@@ -100,22 +77,19 @@ function addCard(evt) {
     addListeners(newCard)
     elements.prepend(newCard)
 
-    closeAddPopup()
 }
 
-render()
+// Pop-up
 
-// Pop-up редактирования профиля
+const openPopup = function(popup) {
+    popup.classList.toggle('popup_opened')
+}
 
-function openEditPopup() {
-    popup.classList.add('popup_opened')
+// Значения и отправка профиля
 
+function inputProfileValue() {
     nameInput.value = titleName.textContent
     jobInput.value = subtitleName.textContent
-}
-
-function closeEditPopup() {
-    popup.classList.remove('popup_opened')
 }
 
 function formSubmitHandler(evt) {
@@ -124,32 +98,23 @@ function formSubmitHandler(evt) {
     titleName.textContent = nameInput.value
     subtitleName.textContent = jobInput.value
 
-    closeEditPopup()
+    openPopup(editPopup)
 }
 
-// Pop-up добавления карточки
+// Значения и отправка новой карточки
 
-function openAddPopup() {
-    addPopup.classList.add('popup_opened')
-
+function inputNewCardValue() {
+    formInputName.value = null
+    formInputImage.value = null
 }
 
-function closeAddPopup() {
-    addPopup.classList.remove('popup_opened')
+function submitNewCard(evt) {
+   evt.preventDefault()
+
+   addCard()
+
+  openPopup(addPopup)
 }
-
-
-// Pop-up картинки
-
-function openImagePopup() {
-    imagePopup.classList.add('popup_opened')
-
-}
-
-function closeImagePopup() {
-    imagePopup.classList.remove('popup_opened')
-}
-
 
 // Удаление карточки, лайк и просмотр картинки
 
@@ -170,7 +135,7 @@ function likeButton(event) {
 }
 
 function viewImage(el) {
-    openImagePopup()
+    openPopup(imagePopup)
     document.querySelector('.popup__item-image').src = el.target.src
     document.querySelector('.popup__item-image').alt = el.target.alt
     document.querySelector('.popup__item-text').textContent = el.target.alt
@@ -180,16 +145,47 @@ function viewImage(el) {
 
 // Pop-up open
 
-editPopupButton.addEventListener('click', openEditPopup)
-addPopupButton.addEventListener('click', openAddPopup)
-imagePopupCloseButton.addEventListener('click', closeImagePopup)
+editPopupButton.addEventListener('click', function() {
+    inputProfileValue()
+    openPopup(editPopup)
+})
+
+addPopupButton.addEventListener('click', function() {
+    inputNewCardValue()
+    openPopup(addPopup)
+})
+
+
 
 // Pop-up close
-popupCloseButton.addEventListener('click', closeEditPopup)
-addPopupCloseButton.addEventListener('click', closeAddPopup)
-// popup.addEventListener('click', function(event) {
+
+editPopupCloseButton.addEventListener('click', function() {
+    openPopup(editPopup)
+})
+
+// editPopup.addEventListener('click', function(event) {
 //     if(event.target === event.currentTarget) {
-//         closeEditPopup()
+//         openPopup(editPopup)
+//     }
+// })
+
+addPopupCloseButton.addEventListener('click', function() {
+    openPopup(addPopup)
+})
+
+// addPopup.addEventListener('click', function(event) {
+//     if(event.target === event.currentTarget) {
+//         openPopup(addPopup)
+//     }
+// })
+
+imagePopupCloseButton.addEventListener('click', function() {
+    openPopup(imagePopup)
+})
+
+// imagePopup.addEventListener('click', function(event) {
+//     if(event.target === event.currentTarget) {
+//         openPopup(imagePopup)
 //     }
 // })
 
@@ -199,4 +195,4 @@ formElement.addEventListener('submit', formSubmitHandler)
 
 // Добавление карточки
 
-formButton.addEventListener('click', addCard) 
+formButton.addEventListener('click', submitNewCard) 
