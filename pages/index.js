@@ -47,41 +47,22 @@ function render() {
     cards.forEach(renderCards)
 }
 
-function renderCards(card) {
-    
+function renderCards(item) {
     const newItem = template.cloneNode(true)
 
-
-    newItem.querySelector('.elements__main-text').textContent = card.name;
-    newItem.querySelector('.elements__item-image').src = card.link;
-    newItem.querySelector('.elements__item-image').alt = card.name;
-
+    newItem.querySelector('.elements__main-text').textContent = item.name;
+    newItem.querySelector('.elements__item-image').src = item.link;
+    newItem.querySelector('.elements__item-image').alt = item.name;
 
     addListeners(newItem)
-    elements.appendChild(newItem)
-
-
+    elements.prepend(newItem)
 }
 
 render()
 
-// Создание карточки
-
-function addCard() {
-    const newCard = template.cloneNode(true)
-
-    newCard.querySelector('.elements__main-text').textContent = formInputName.value
-    newCard.querySelector('.elements__item-image').src = formInputImage.value
-    newCard.querySelector('.elements__item-image').alt = formInputName.value
-
-    addListeners(newCard)
-    elements.prepend(newCard)
-
-}
-
 // Pop-up
 
-const openPopup = function(popup) {
+const actionPopup = function(popup) {
     popup.classList.toggle('popup_opened')
 }
 
@@ -92,13 +73,13 @@ function inputProfileValue() {
     jobInput.value = subtitleName.textContent
 }
 
-function formSubmitHandler(evt) {
+function submitEditProfile(evt) {
     evt.preventDefault()
 
     titleName.textContent = nameInput.value
     subtitleName.textContent = jobInput.value
 
-    openPopup(editPopup)
+    actionPopup(editPopup)
 }
 
 // Значения и отправка новой карточки
@@ -111,9 +92,9 @@ function inputNewCardValue() {
 function submitNewCard(evt) {
    evt.preventDefault()
 
-   addCard()
+   renderCards({ name: formInputName.value, link: formInputImage.value })
 
-  openPopup(addPopup)
+   actionPopup(addPopup)
 }
 
 // Удаление карточки, лайк и просмотр картинки
@@ -135,7 +116,7 @@ function likeButton(event) {
 }
 
 function viewImage(el) {
-    openPopup(imagePopup)
+    actionPopup(imagePopup)
     document.querySelector('.popup__item-image').src = el.target.src
     document.querySelector('.popup__item-image').alt = el.target.alt
     document.querySelector('.popup__item-text').textContent = el.target.alt
@@ -147,51 +128,49 @@ function viewImage(el) {
 
 editPopupButton.addEventListener('click', function() {
     inputProfileValue()
-    openPopup(editPopup)
+    actionPopup(editPopup)
 })
 
 addPopupButton.addEventListener('click', function() {
     inputNewCardValue()
-    openPopup(addPopup)
+    actionPopup(addPopup)
 })
-
-
 
 // Pop-up close
 
 editPopupCloseButton.addEventListener('click', function() {
-    openPopup(editPopup)
+    actionPopup(editPopup)
 })
 
 // editPopup.addEventListener('click', function(event) {
 //     if(event.target === event.currentTarget) {
-//         openPopup(editPopup)
+//         actionPopup(editPopup)
 //     }
 // })
 
 addPopupCloseButton.addEventListener('click', function() {
-    openPopup(addPopup)
+    actionPopup(addPopup)
 })
 
 // addPopup.addEventListener('click', function(event) {
 //     if(event.target === event.currentTarget) {
-//         openPopup(addPopup)
+//         actionPopup(addPopup)
 //     }
 // })
 
 imagePopupCloseButton.addEventListener('click', function() {
-    openPopup(imagePopup)
+    actionPopup(imagePopup)
 })
 
 // imagePopup.addEventListener('click', function(event) {
 //     if(event.target === event.currentTarget) {
-//         openPopup(imagePopup)
+//         actionPopup(imagePopup)
 //     }
 // })
 
 // Pop-up формы
 
-formElement.addEventListener('submit', formSubmitHandler)
+formElement.addEventListener('submit', submitEditProfile)
 
 // Добавление карточки
 
