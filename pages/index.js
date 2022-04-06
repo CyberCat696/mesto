@@ -24,7 +24,7 @@ const elements = document.querySelector('.elements')
 
 // Добавление карточки
 
-const formButton = document.querySelector('#addButton')
+const formSubmit = document.querySelector('#formPlace')
 
 // Форма редактирования
 
@@ -56,14 +56,19 @@ function renderCards(item) {
 
     addListeners(newItem)
     elements.prepend(newItem)
+
 }
 
 render()
 
 // Pop-up
 
-const actionPopup = function(popup) {
-    popup.classList.toggle('popup_opened')
+const openPopup = function(popup) {
+    popup.classList.add('popup_opened')
+}
+
+const closePopup = function(popup) {
+    popup.classList.remove('popup_opened')
 }
 
 // Значения и отправка профиля
@@ -79,7 +84,7 @@ function submitEditProfile(evt) {
     titleName.textContent = nameInput.value
     subtitleName.textContent = jobInput.value
 
-    actionPopup(editPopup)
+    closePopup(editPopup)
 }
 
 // Значения и отправка новой карточки
@@ -90,11 +95,11 @@ function inputNewCardValue() {
 }
 
 function submitNewCard(evt) {
-   evt.preventDefault()
+    evt.preventDefault()
 
    renderCards({ name: formInputName.value, link: formInputImage.value })
 
-   actionPopup(addPopup)
+   closePopup(addPopup)
 }
 
 // Удаление карточки, лайк и просмотр картинки
@@ -102,8 +107,7 @@ function submitNewCard(evt) {
 function addListeners(el) {
     el.querySelector('.element__item-trash-icon').addEventListener('click', deleteCard)
     el.querySelector('.elements__main-heart-logo').addEventListener('click', likeButton)
-    el.querySelector('.elements__item-image').addEventListener('click', viewImage)
-    
+    el.querySelector('.elements__item-image').addEventListener('click', viewImage)    
 }
 
 function deleteCard(event) {
@@ -116,7 +120,7 @@ function likeButton(event) {
 }
 
 function viewImage(el) {
-    actionPopup(imagePopup)
+    openPopup(imagePopup)
     document.querySelector('.popup__item-image').src = el.target.src
     document.querySelector('.popup__item-image').alt = el.target.alt
     document.querySelector('.popup__item-text').textContent = el.target.alt
@@ -128,45 +132,67 @@ function viewImage(el) {
 
 editPopupButton.addEventListener('click', function() {
     inputProfileValue()
-    actionPopup(editPopup)
+    openPopup(editPopup)
 })
 
 addPopupButton.addEventListener('click', function() {
     inputNewCardValue()
-    actionPopup(addPopup)
+    openPopup(addPopup)
 })
 
 // Pop-up close
 
 editPopupCloseButton.addEventListener('click', function() {
-    actionPopup(editPopup)
+    closePopup(editPopup)
 })
-
-// editPopup.addEventListener('click', function(event) {
-//     if(event.target === event.currentTarget) {
-//         actionPopup(editPopup)
-//     }
-// })
 
 addPopupCloseButton.addEventListener('click', function() {
-    actionPopup(addPopup)
+    closePopup(addPopup)
 })
-
-// addPopup.addEventListener('click', function(event) {
-//     if(event.target === event.currentTarget) {
-//         actionPopup(addPopup)
-//     }
-// })
 
 imagePopupCloseButton.addEventListener('click', function() {
-    actionPopup(imagePopup)
+    closePopup(imagePopup)
 })
 
-// imagePopup.addEventListener('click', function(event) {
-//     if(event.target === event.currentTarget) {
-//         actionPopup(imagePopup)
-//     }
-// })
+// Pop-up close around
+
+editPopup.addEventListener('click', function(event) {
+    if(event.target === event.currentTarget) {
+        closePopup(editPopup)
+    }
+})
+
+addPopup.addEventListener('click', function(event) {
+    if(event.target === event.currentTarget) {
+        closePopup(addPopup)
+    }
+})
+
+imagePopup.addEventListener('click', function(event) {
+    if(event.target === event.currentTarget) {
+        closePopup(imagePopup)
+    }
+})
+
+// Pop-up close ESC
+
+document.addEventListener('keydown', function(event) {
+    if(event.key === 'Escape') {
+        closePopup(editPopup)
+    }
+})
+
+document.addEventListener('keydown', function(event) {
+    if(event.key === 'Escape') {
+        closePopup(addPopup)
+    }
+})
+
+document.addEventListener('keydown', function(event) {
+    if(event.key === 'Escape') {
+        closePopup(imagePopup)
+    }
+})
 
 // Pop-up формы
 
@@ -174,4 +200,4 @@ formElement.addEventListener('submit', submitEditProfile)
 
 // Добавление карточки
 
-formButton.addEventListener('click', submitNewCard) 
+formSubmit.addEventListener('submit', submitNewCard) 

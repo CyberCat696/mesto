@@ -1,0 +1,29 @@
+.form__title-button-submit_disable {
+    min-width: 358px;
+    min-height: 50px;
+    margin: 18px 0 0 0;
+    padding: 0;
+    background-color: white;
+    color: #c5c5c5;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    border: none;
+    border-radius: 2px;
+    border: 1px solid rgb(197,197,197);
+  }
+  
+  @media (max-width: 620px) {
+    .form__title-button-submit_disable {
+      min-width: 238px;
+      min-height: 46px;
+      font-size: 14px;
+      line-height: 16px;
+      margin: 16px 0 0 0;
+    }
+  }
+  
+  .form__title-button-submit_disable:hover {
+    opacity: 1;
+    cursor: default;
+  }

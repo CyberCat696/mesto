@@ -1,7 +1,7 @@
 .form__title-button-submit {
   min-width: 358px;
   min-height: 50px;
-  margin: 18px 0 0 0;
+  margin: 36px 0 0 0;
   padding: 0;
   background-color: black;
   color: white;
@@ -18,7 +18,7 @@
     min-height: 46px;
     font-size: 14px;
     line-height: 16px;
-    margin: 16px 0 0 0;
+    margin: 45px 0 0 0;
   }
 }
 

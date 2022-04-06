@@ -45,21 +45,25 @@
         </li>
     </template>
     <div id="profile" class="popup">
-        <form class="form" name="profile" action="url">
+        <form id="formProfile" class="form" name="profile" action="url" novalidate>
             <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа">
+            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа" minlength="2" maxlength="40">
+            <span class="name-error form__input-error"></span>
             <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
-                value="Покоритель вершин">
+                value="Покоритель вершин" minlength="2" maxlength="200">
+                <span class="job-error form__input-error"></span>
             <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
     </div>
     <div id="place" class="popup">
-        <form class="form" name="place" action="">
+        <form id="formPlace" class="form" name="place" action="" novalidate>
             <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
             <h2 class="form__title">Новое место</h2>
-            <input class="form__title-input form__title-input_name" type="text" name="place" placeholder="Название">
-            <input id="src" class="form__title-input form__title-input_image" type="text" name="source" placeholder="Ссылка на картинку">
+            <input id="location" class="form__title-input form__title-input_name" type="text" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="location-error form__input-error"></span>
+            <input id="src" class="form__title-input form__title-input_image" type="url" name="source" placeholder="Ссылка на картинку" required>
+            <span class="src-error form__input-error"></span>
             <button id="addButton" class="form__title-button-submit" type="submit" aria-label="создать">Создать</button>
         </form>
     </div>
@@ -74,6 +78,7 @@
         </div>
         <script src="./pages/cards.js"></script>
     <script src="./pages/index.js"></script>
+    <script src="./pages/validate.js"></script>
 </body>
 
 </html>
