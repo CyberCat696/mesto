@@ -5,6 +5,7 @@
 const editPopup = document.querySelector('#profile')
 const addPopup = document.querySelector('#place')
 const imagePopup = document.querySelector('#image')
+const popups = document.querySelectorAll('.popup')
 
 // Pop-up open
 
@@ -17,6 +18,11 @@ const editPopupCloseButton = editPopup.querySelector('.popup__close-icon')
 const addPopupCloseButton = addPopup.querySelector('.popup__close-icon')
 const imagePopupCloseButton = imagePopup.querySelector('.popup__close-icon')
 
+// Pop-up Image
+
+const imageItem = document.querySelector('.popup__item-image')
+const imageTextItem = document.querySelector('.popup__item-text')
+
 // Template
 
 const template = document.querySelector('.item__template').content
@@ -28,47 +34,65 @@ const formSubmit = document.querySelector('#formPlace')
 
 // Форма редактирования
 
-let titleName = document.querySelector('.profile__title-name')
-let subtitleName = document.querySelector('.profile__subtitle')
-let formElement = document.querySelector('.form')
-let nameInput = document.querySelector('#name')
-let jobInput = document.querySelector('#job')
+const titleName = document.querySelector('.profile__title-name')
+const subtitleName = document.querySelector('.profile__subtitle')
+const formElement = document.querySelector('.form')
+const nameInput = document.querySelector('#name')
+const jobInput = document.querySelector('#job')
 
 // Форма добавления
 
-let formInputName = document.querySelector('.form__title-input_name')
-let formInputImage = document.querySelector('.form__title-input_image')
+const formInputName = document.querySelector('.form__title-input_name')
+const formInputImage = document.querySelector('.form__title-input_image')
+const formAddBtn = document.querySelector('#addButton')
 
 // ==========================================================  Функции  =========================================================
 
-// Рендер карточек
+// Создание и рендер карточек
 
-function render() {
-    cards.forEach(renderCards)
+function createCard(item) {
+    const newCard = template.cloneNode(true)
+
+    newCard.querySelector('.elements__main-text').textContent = item.name
+    newCard.querySelector('.elements__item-image').src = item.link
+    newCard.querySelector('.elements__item-image').alt = item.name
+
+    addListeners(newCard)
+
+    return newCard
 }
 
 function renderCards(item) {
-    const newItem = template.cloneNode(true)
+    const cards = createCard(item)
 
-    newItem.querySelector('.elements__main-text').textContent = item.name;
-    newItem.querySelector('.elements__item-image').src = item.link;
-    newItem.querySelector('.elements__item-image').alt = item.name;
+    elements.prepend(cards)
+}
 
-    addListeners(newItem)
-    elements.prepend(newItem)
-
+function render() {
+    cards.forEach(renderCards)
 }
 
 render()
 
 // Pop-up
 
-const openPopup = function(popup) {
+const openPopup = function (popup) {
     popup.classList.add('popup_opened')
+    formAddBtn.disabled = true
+    formAddBtn.classList.add('form__title-button-submit_disable')
+    document.addEventListener('keydown', closeEscapeBtn)
 }
 
-const closePopup = function(popup) {
+const closePopup = function (popup) {
     popup.classList.remove('popup_opened')
+    document.removeEventListener('keydown', closeEscapeBtn)
+}
+
+function closeEscapeBtn(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened')
+        closePopup(openedPopup)
+    }
 }
 
 // Значения и отправка профиля
@@ -97,9 +121,9 @@ function inputNewCardValue() {
 function submitNewCard(evt) {
     evt.preventDefault()
 
-   renderCards({ name: formInputName.value, link: formInputImage.value })
+    renderCards({ name: formInputName.value, link: formInputImage.value })
 
-   closePopup(addPopup)
+    closePopup(addPopup)
 }
 
 // Удаление карточки, лайк и просмотр картинки
@@ -107,7 +131,7 @@ function submitNewCard(evt) {
 function addListeners(el) {
     el.querySelector('.element__item-trash-icon').addEventListener('click', deleteCard)
     el.querySelector('.elements__main-heart-logo').addEventListener('click', likeButton)
-    el.querySelector('.elements__item-image').addEventListener('click', viewImage)    
+    el.querySelector('.elements__item-image').addEventListener('click', viewImage)
 }
 
 function deleteCard(event) {
@@ -121,77 +145,35 @@ function likeButton(event) {
 
 function viewImage(el) {
     openPopup(imagePopup)
-    document.querySelector('.popup__item-image').src = el.target.src
-    document.querySelector('.popup__item-image').alt = el.target.alt
-    document.querySelector('.popup__item-text').textContent = el.target.alt
+    imageItem.src = el.target.src
+    imageItem.alt = el.target.alt
+    imageTextItem.textContent = el.target.alt
 }
 
 // ==========================================================  Слушаки  =========================================================
 
 // Pop-up open
 
-editPopupButton.addEventListener('click', function() {
+editPopupButton.addEventListener('click', function () {
     inputProfileValue()
     openPopup(editPopup)
 })
 
-addPopupButton.addEventListener('click', function() {
+addPopupButton.addEventListener('click', function () {
     inputNewCardValue()
     openPopup(addPopup)
 })
 
-// Pop-up close
+// Pop-up close 
 
-editPopupCloseButton.addEventListener('click', function() {
-    closePopup(editPopup)
-})
-
-addPopupCloseButton.addEventListener('click', function() {
-    closePopup(addPopup)
-})
-
-imagePopupCloseButton.addEventListener('click', function() {
-    closePopup(imagePopup)
-})
-
-// Pop-up close around
-
-editPopup.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        closePopup(editPopup)
-    }
-})
-
-addPopup.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        closePopup(addPopup)
-    }
-})
-
-imagePopup.addEventListener('click', function(event) {
-    if(event.target === event.currentTarget) {
-        closePopup(imagePopup)
-    }
-})
-
-// Pop-up close ESC
-
-document.addEventListener('keydown', function(event) {
-    if(event.key === 'Escape') {
-        closePopup(editPopup)
-    }
-})
-
-document.addEventListener('keydown', function(event) {
-    if(event.key === 'Escape') {
-        closePopup(addPopup)
-    }
-})
-
-document.addEventListener('keydown', function(event) {
-    if(event.key === 'Escape') {
-        closePopup(imagePopup)
-    }
+popups.forEach(function (item) {
+    item.querySelector('.popup__close-icon').addEventListener('mousedown', function () {
+        closePopup(item)
+    })
+    item.addEventListener('mousedown', function (evt) {
+        if (evt.currentTarget === evt.target)
+            closePopup(item)
+    })
 })
 
 // Pop-up формы
