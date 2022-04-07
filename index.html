@@ -48,10 +48,10 @@
         <form id="formProfile" class="form" name="profile" action="url" novalidate>
             <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа" minlength="2" maxlength="40">
+            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа" minlength="2" maxlength="40" required>
             <span class="name-error form__input-error"></span>
             <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
-                value="Покоритель вершин" minlength="2" maxlength="200">
+                value="Покоритель вершин" minlength="2" maxlength="200" required>
                 <span class="job-error form__input-error"></span>
             <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
@@ -76,9 +76,9 @@
                 <figcaption class="popup__item-text"></figcaption>
             </figure>
         </div>
-        <script src="./pages/cards.js"></script>
-    <script src="./pages/index.js"></script>
-    <script src="./pages/validate.js"></script>
+        <script src="./scripts/cards.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
