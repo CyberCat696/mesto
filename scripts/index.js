@@ -78,8 +78,6 @@ render()
 
 const openPopup = function (popup) {
     popup.classList.add('popup_opened')
-    formAddBtn.disabled = true
-    formAddBtn.classList.add('form__title-button-submit_disable')
     document.addEventListener('keydown', closeEscapeBtn)
 }
 
@@ -116,6 +114,8 @@ function submitEditProfile(evt) {
 function inputNewCardValue() {
     formInputName.value = null
     formInputImage.value = null
+    formAddBtn.disabled = true
+    formAddBtn.classList.add('form__title-button-submit_disable')
 }
 
 function submitNewCard(evt) {
