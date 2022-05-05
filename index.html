@@ -48,11 +48,12 @@
         <form id="formProfile" class="form" name="profile" action="url" novalidate>
             <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа" minlength="2" maxlength="40" required>
+            <input id="name" class="form__title-input" type="text" name="name" placeholder="Имя" value="Нирмал Пурджа"
+                minlength="2" maxlength="40" required>
             <span class="name-error form__input-error"></span>
             <input id="job" class="form__title-input" type="text" name="job" placeholder="О себе"
                 value="Покоритель вершин" minlength="2" maxlength="200" required>
-                <span class="job-error form__input-error"></span>
+            <span class="job-error form__input-error"></span>
             <button class="form__title-button-submit" type="submit" aria-label="сохранить">Сохранить</button>
         </form>
     </div>
@@ -60,25 +61,24 @@
         <form id="formPlace" class="form" name="place" action="" novalidate>
             <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
             <h2 class="form__title">Новое место</h2>
-            <input id="location" class="form__title-input form__title-input_name" type="text" name="place" placeholder="Название" minlength="2" maxlength="30" required>
+            <input id="location" class="form__title-input form__title-input_name" type="text" name="place"
+                placeholder="Название" minlength="2" maxlength="30" required>
             <span class="location-error form__input-error"></span>
-            <input id="src" class="form__title-input form__title-input_image" type="url" name="source" placeholder="Ссылка на картинку" required>
+            <input id="src" class="form__title-input form__title-input_image" type="url" name="source"
+                placeholder="Ссылка на картинку" required>
             <span class="src-error form__input-error"></span>
             <button id="addButton" class="form__title-button-submit" type="submit" aria-label="создать">Создать</button>
         </form>
     </div>
     <div id="image" class="popup">
-            <figure class="popup__item">
-                <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
-                <img class="popup__item-image"
-                    src="#"
-                    alt="#">
-                <figcaption class="popup__item-text"></figcaption>
-            </figure>
-        </div>
-        <script src="./scripts/cards.js"></script>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+        <figure class="popup__item">
+            <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+            <img class="popup__item-image" src="#" alt="#">
+            <figcaption class="popup__item-text"></figcaption>
+        </figure>
+    </div>
+    <script src="./scripts/constants.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>

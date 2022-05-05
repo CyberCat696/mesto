@@ -1,65 +1,15 @@
-// ==========================================================  Переменные  =========================================================
-
-// Pop-up
-
-const editPopup = document.querySelector('#profile')
-const addPopup = document.querySelector('#place')
-const imagePopup = document.querySelector('#image')
-const popups = document.querySelectorAll('.popup')
-
-// Pop-up open
-
-const addPopupButton = document.querySelector('.profile__add-button')
-const editPopupButton = document.querySelector('.profile__title-edit-button')
-
-// Pop-up close
-
-const editPopupCloseButton = editPopup.querySelector('.popup__close-icon')
-const addPopupCloseButton = addPopup.querySelector('.popup__close-icon')
-const imagePopupCloseButton = imagePopup.querySelector('.popup__close-icon')
-
-// Pop-up Image
-
-const imageItem = document.querySelector('.popup__item-image')
-const imageTextItem = document.querySelector('.popup__item-text')
-
-// Template
-
-const template = document.querySelector('.item__template').content
-const elements = document.querySelector('.elements')
-
-// Добавление карточки
-
-const formSubmit = document.querySelector('#formPlace')
-
-// Форма редактирования
-
-const titleName = document.querySelector('.profile__title-name')
-const subtitleName = document.querySelector('.profile__subtitle')
-const formElement = document.querySelector('.form')
-const nameInput = document.querySelector('#name')
-const jobInput = document.querySelector('#job')
-
-// Форма добавления
-
-const formInputName = document.querySelector('.form__title-input_name')
-const formInputImage = document.querySelector('.form__title-input_image')
-const formAddBtn = document.querySelector('#addButton')
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
 
 // ==========================================================  Функции  =========================================================
 
 // Создание и рендер карточек
 
-function createCard(item) {
-    const newCard = template.cloneNode(true)
+function createCard(cardInfo) {
+    const card = new Card(cardInfo, template)
+    const cardElement = card.createCard()
 
-    newCard.querySelector('.elements__main-text').textContent = item.name
-    newCard.querySelector('.elements__item-image').src = item.link
-    newCard.querySelector('.elements__item-image').alt = item.name
-
-    addListeners(newCard)
-
-    return newCard
+    return cardElement
 }
 
 function renderCards(item) {
@@ -76,7 +26,7 @@ render()
 
 // Pop-up
 
-const openPopup = function (popup) {
+export const openPopup = function (popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', closeEscapeBtn)
 }
@@ -98,6 +48,7 @@ function closeEscapeBtn(evt) {
 function inputProfileValue() {
     nameInput.value = titleName.textContent
     jobInput.value = subtitleName.textContent
+    addValidationProfile.resetTextError()
 }
 
 function submitEditProfile(evt) {
@@ -109,6 +60,8 @@ function submitEditProfile(evt) {
     closePopup(editPopup)
 }
 
+const addValidationProfile = new FormValidator(settings, formProfile)
+
 // Значения и отправка новой карточки
 
 function inputNewCardValue() {
@@ -116,6 +69,8 @@ function inputNewCardValue() {
     formInputImage.value = null
     formAddBtn.disabled = true
     formAddBtn.classList.add('form__title-button-submit_disable')
+    addValidationPlace.resetTextError()
+    addValidationPlace.disableButton()
 }
 
 function submitNewCard(evt) {
@@ -126,29 +81,7 @@ function submitNewCard(evt) {
     closePopup(addPopup)
 }
 
-// Удаление карточки, лайк и просмотр картинки
-
-function addListeners(el) {
-    el.querySelector('.element__item-trash-icon').addEventListener('click', deleteCard)
-    el.querySelector('.elements__main-heart-logo').addEventListener('click', likeButton)
-    el.querySelector('.elements__item-image').addEventListener('click', viewImage)
-}
-
-function deleteCard(event) {
-    event.target.closest('.elements__item').remove()
-}
-
-
-function likeButton(event) {
-    event.target.classList.toggle('elements__main-heart-logo_active')
-}
-
-function viewImage(el) {
-    openPopup(imagePopup)
-    imageItem.src = el.target.src
-    imageItem.alt = el.target.alt
-    imageTextItem.textContent = el.target.alt
-}
+const addValidationPlace = new FormValidator(settings, formPlace)
 
 // ==========================================================  Слушаки  =========================================================
 
@@ -182,4 +115,7 @@ formElement.addEventListener('submit', submitEditProfile)
 
 // Добавление карточки
 
-formSubmit.addEventListener('submit', submitNewCard) 
+formPlace.addEventListener('submit', submitNewCard)
+
+addValidationProfile.enableValidation()
+addValidationPlace.enableValidation()
