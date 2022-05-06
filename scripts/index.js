@@ -13,9 +13,9 @@ function createCard(cardInfo) {
 }
 
 function renderCard(item) {
-    const cards = createCard(item)
+    const card = createCard(item)
 
-    elements.prepend(cards)
+    elements.prepend(card)
 }
 
 function renderArrayCards() {
