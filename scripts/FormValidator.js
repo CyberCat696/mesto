@@ -63,13 +63,7 @@ export class FormValidator {
         const formList = Array.from(document.querySelectorAll(this._formSelector))
 
         formList.forEach((input) => {
-            input.addEventListener('submit', (evt) => {
-
-                evt.preventDefault()
-            })
-
             this._setEventListeners(input)
-
         })
     }
 

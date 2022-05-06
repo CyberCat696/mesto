@@ -1,5 +1,6 @@
 .popup__item {
     max-width: 816px;
+    max-height: 700px;
     margin: 90px auto;
     padding: 0;
     position: relative;

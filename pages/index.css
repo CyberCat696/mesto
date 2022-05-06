@@ -37,3 +37,7 @@
 @import url(../blocks/popup/__item/popup__item.css);
 @import url(../blocks/popup/__item-image/popup__item-image.css);
 @import url(../blocks/popup/__item-text/popup__item-text.css);
+@import url(../blocks/location-error/location-error.css);
+@import url(../blocks/src-error/src-error.css);
+@import url(../blocks/name-error/name-error.css);
+@import url(../blocks/job-error/job-error.css);

@@ -62,7 +62,6 @@ const formProfile = document.querySelector('#formProfile')
 
 const titleName = document.querySelector('.profile__title-name')
 const subtitleName = document.querySelector('.profile__subtitle')
-const formElement = document.querySelector('.form')
 const nameInput = document.querySelector('#name')
 const jobInput = document.querySelector('#job')
 

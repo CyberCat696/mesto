@@ -24,18 +24,28 @@ export class Card {
         return this._card
     }
 
+    _handleRemoveCard() {
+        this._card.remove()
+    }
+
+    _handleLikeButton(evt) {
+        evt.target.classList.toggle('elements__main-heart-logo_active')
+    }
+
+    _viewImage() {
+        openPopup(imagePopup)
+        imageItem.src = this._link
+        imageItem.alt = this._name
+        imageTextItem.textContent = this._name
+    }
+
     _setListeners() {
-        this._card.querySelector('.element__item-trash-icon').addEventListener('click', (evt) => {
-            evt.target.closest('.elements__item').remove()
+        this._card.querySelector('.element__item-trash-icon').addEventListener('click', () => {
+            this._handleRemoveCard()
         })
-        this._card.querySelector('.elements__main-heart-logo').addEventListener('click', (evt) => {
-            evt.target.classList.toggle('elements__main-heart-logo_active')
-        })
-        this._card.querySelector('.elements__item-image').addEventListener('click', (el) => {
-            openPopup(imagePopup)
-            imageItem.src = el.target.src
-            imageItem.alt = el.target.alt
-            imageTextItem.textContent = el.target.alt
+        this._card.querySelector('.elements__main-heart-logo').addEventListener('click', this._handleLikeButton)
+        this._card.querySelector('.elements__item-image').addEventListener('click', () => {
+            this._viewImage()
         })
     }
 }

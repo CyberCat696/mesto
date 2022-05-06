@@ -12,17 +12,17 @@ function createCard(cardInfo) {
     return cardElement
 }
 
-function renderCards(item) {
+function renderCard(item) {
     const cards = createCard(item)
 
     elements.prepend(cards)
 }
 
-function render() {
-    cards.forEach(renderCards)
+function renderArrayCards() {
+    cards.forEach(renderCard)
 }
 
-render()
+renderArrayCards()
 
 // Pop-up
 
@@ -65,10 +65,8 @@ const addValidationProfile = new FormValidator(settings, formProfile)
 // Значения и отправка новой карточки
 
 function inputNewCardValue() {
-    formInputName.value = null
-    formInputImage.value = null
-    formAddBtn.disabled = true
-    formAddBtn.classList.add('form__title-button-submit_disable')
+    // formInputName.value = null
+    // formInputImage.value = null
     addValidationPlace.resetTextError()
     addValidationPlace.disableButton()
 }
@@ -76,7 +74,9 @@ function inputNewCardValue() {
 function submitNewCard(evt) {
     evt.preventDefault()
 
-    renderCards({ name: formInputName.value, link: formInputImage.value })
+    renderCard({ name: formInputName.value, link: formInputImage.value })
+
+    evt.target.reset()
 
     closePopup(addPopup)
 }
@@ -111,7 +111,7 @@ popups.forEach(function (item) {
 
 // Pop-up формы
 
-formElement.addEventListener('submit', submitEditProfile)
+formProfile.addEventListener('submit', submitEditProfile)
 
 // Добавление карточки
 
